@@ -3,6 +3,14 @@
   border: 2px solid blueviolet;
 }
 
+#gameDetails {
+  border: 2px solid yellowgreen;
+}
+
+.colPlayer {
+  border: 2px solid blue;
+}
+
 #tableSelf, #tableOpp {
   border: 2px solid red;
   margin: 10px auto;
@@ -12,6 +20,13 @@
   border: 1px solid grey;
   text-align: center;
   width: 25px;
+}
+
+.tableDetails, .tableDetails td {
+  width: 60%;
+  border: 2px solid slategray;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .shipCell {
