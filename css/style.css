@@ -1,0 +1,27 @@
+#title {
+  text-align: center;
+  border: 2px solid blueviolet;
+}
+
+#tableSelf, #tableOpp {
+  border: 2px solid red;
+  margin: 10px auto;
+}
+
+#tableSelf td, #tableOpp td{
+  border: 1px solid grey;
+  text-align: center;
+  width: 25px;
+}
+
+.shipCell {
+  background-color: blue;
+}
+
+.salvoCell {
+  background-color: red;
+}
+
+.salvoHit {
+  background-color: purple;
+}
