@@ -182,29 +182,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <table class="tableDetails">
-                            <tr>
-                                <th>SHIPS:</th>
-                            </tr>
-                            <tr>                        
-                                <td id="shipSelf">[ B2, F7, A0 ]</td>
-                            </tr>
-                        </table>
-                        <table class="tableDetails">
-                            <tr>
-                                <th>SALVOES:</th>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>1</span></td>
-                                <td id="salvoOpp">[ J5 ]</td>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>2</span></td>
-                                <td id="salvoOpp">[ F7 ]</td>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>3</span></td>
-                                <td id="salvoOpp">[ C1 ]</td>
-                            </tr>
+                            <tbody id="tbodySalvoesSelf">
+                                <tr>
+                                    <th>SALVOES:</th>
+                                </tr>
+                            </tbody>                            
                         </table>
                     </div>
                 </div>
@@ -368,30 +350,12 @@
 
                 <div class="row">            
                     <div class="col-md-12">
-                        <table class="tableDetails">
-                            <tr>
-                                <th>SHIPS:</th>
-                            </tr>
-                            <tr>
-                                <td id="shipOpp">[ A2, B5, H7 ]</td>
-                            </tr>
-                        </table>
-                        <table  class="tableDetails">
-                            <tr>
-                                <th>SALVOES:</th>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>1</span></td>
-                                <td id="salvoSelf">[ C5 ]</td>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>2</span></td>
-                                <td id="salvoSelf">[ D9 ]</td>
-                            </tr>
-                            <tr>
-                                <td>TURNO <span>3</span></td>
-                                <td id="salvoSelf">[ H7 ]</td>
-                            </tr>
+                        <table id="tbodySalvoesOpp" class="tableDetails">
+                            <tbody>
+                                <tr>
+                                    <th>SALVOES:</th>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -402,6 +366,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/script.js" type="text/javascript"></script>
 
 </body>
 </html>
