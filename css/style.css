@@ -1,7 +1,24 @@
+body {
+  background-image: url(../img/back1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 #title {
   text-align: center;
   border: 2px solid blueviolet;
+  background-color: rgba(0, 0, 0, 0.7);
 }
+
+#bannerTitle {
+  background-image: url(../img/title.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  max-width: 100%;
+}
+
+
 
 #gameDetails {
   border: 2px solid yellowgreen;
@@ -9,11 +26,14 @@
 
 .colPlayer {
   border: 2px solid blue;
+  border-radius: 25px;
 }
 
 #tableSelf, #tableOpp {
   border: 2px solid red;
-  margin: 10px auto;
+  margin: 10px auto;  
+  background-color: rgba(0, 0, 0, 0.7);
+  color: goldenrod;
 }
 
 #tableSelf td, #tableOpp td{
@@ -27,6 +47,8 @@
   border: 2px solid slategray;
   margin: 10px auto;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: goldenrod;
 }
 
 .shipCell {
