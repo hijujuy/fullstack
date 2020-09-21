@@ -1,15 +1,10 @@
 var shipsLocationsSelf  = ['A0','B2','F7'];
 var shipsLocationsOpp   = ['A2','B5','H9'];
 
-showShipsLocations(shipsLocationsSelf, true);
-showShipsLocations(shipsLocationsOpp, false);
+showShipsLocations(shipsLocations);
 
-function showShipsLocations(shipsLocations, self) {
+function showShipsLocations(shipsLocations) {
     shipsLocations.forEach(item => {
-        if (self) {
-            document.getElementById('S'+item).classList.add('shipCell');
-        }else {
-            document.getElementById(item).classList.add('shipCellOpp');            
-        }
+        document.getElementById('S'+item).classList.add('shipCell');
     });
 }
