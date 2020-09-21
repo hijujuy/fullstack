@@ -1,10 +1,10 @@
 const tbodySalvoessSelf = document.getElementById('tbodySalvoesSelf');
 const tbodySalvoesOpp = document.getElementById('tbodySalvoesOpp');
-var salvoesLocationsSelf = ['C5', 'F0', 'H6'];
-var salvoesLocationsOpp = ['C1', 'F6', 'J5'];
+var salvoesLocationsSelf = ['B5', 'F0', 'H6'];
+var salvoesLocationsOpp = ['C1', 'F7', 'J5'];
 
-showPositions(salvoesLocationsSelf, true);
-showPositions(salvoesLocationsOpp, false);
+showPositions(salvoesLocationsOpp, true);
+showPositions(salvoesLocationsSelf, false);
 
 function showPositions(salvoesLocations, self) {
     let tbody = self ? tbodySalvoessSelf : tbodySalvoesOpp;
@@ -12,9 +12,17 @@ function showPositions(salvoesLocations, self) {
     var celda = document.createElement('td');
     var locations = '';
 
-    salvoesLocations.forEach(item => {
-        locations += ' ' + item;
-        document.getElementById(self ? 'S'+item : item).classList.add('salvoCell');
+    salvoesLocations.forEach(salvoLocation => {
+        locations += ' ' + salvoLocation;
+        let cell = document.getElementById(self ? 'S'+salvoLocation : salvoLocation);
+        if (self) {
+            (cell.classList.contains('shipCell')) ? 
+                cell.classList.add('hitCell') : cell.classList.add('salvoCell');
+        }else {
+            (shipsLocationsOpp.find(shipLocation => shipLocation === salvoLocation)) ? 
+                cell.classList.add('hitCell') : cell.classList.add('salvoCell');
+        }
+        
     });
 
     locations = document.createTextNode('[ ' + locations + ' ]');
