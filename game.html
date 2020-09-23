@@ -11,358 +11,520 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12" id="title">
-                <img id="bannerTitle" src="img/title.png" alt="bannerTitle">
+            <div id="title" class="col-md-12">
+                <img src="./img/title.png" alt="title">
             </div>
         </div>
 
-        <div class="row">
-            <div id="gameDetails" class="col-md-12 text-center">
-                TURNO: <span id="turn">4</span> - ESTADO DEL JUEGO: <span id="gameState">PLAY</span>
+        <div id="infoGames">
+        </div>
+
+        <div id="shipPlace">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="tableShipsPlacement" class="divTable">
+                        <div class="divTableBody">
+                            <div class="divRow">
+                                <div class="divCell">#</div>
+                                <div class="divCell">0</div>
+                                <div class="divCell">1</div>
+                                <div class="divCell">2</div>
+                                <div class="divCell">3</div>
+                                <div class="divCell">4</div>
+                                <div class="divCell">5</div>
+                                <div class="divCell">6</div>
+                                <div class="divCell">7</div>
+                                <div class="divCell">8</div>
+                                <div class="divCell">9</div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">0</div>
+                                <div id="P00" class="divCell"></div>
+                                <div id="P01" class="divCell"></div>
+                                <div id="P02" class="divCell"></div>
+                                <div id="P03" class="divCell"></div>
+                                <div id="P04" class="divCell"></div>
+                                <div id="P05" class="divCell"></div>
+                                <div id="P06" class="divCell"></div>
+                                <div id="P07" class="divCell"></div>
+                                <div id="P08" class="divCell"></div>
+                                <div id="P09" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">1</div>
+                                <div id="P10" class="divCell"></div>
+                                <div id="P11" class="divCell"></div>
+                                <div id="P12" class="divCell"></div>
+                                <div id="P13" class="divCell"></div>
+                                <div id="P14" class="divCell"></div>
+                                <div id="P15" class="divCell"></div>
+                                <div id="P16" class="divCell"></div>
+                                <div id="P17" class="divCell"></div>
+                                <div id="P18" class="divCell"></div>
+                                <div id="P19" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">2</div>
+                                <div id="P20" class="divCell"></div>
+                                <div id="P21" class="divCell"></div>
+                                <div id="P22" class="divCell"></div>
+                                <div id="P23" class="divCell"></div>
+                                <div id="P24" class="divCell"></div>
+                                <div id="P25" class="divCell"></div>
+                                <div id="P26" class="divCell"></div>
+                                <div id="P27" class="divCell"></div>
+                                <div id="P28" class="divCell"></div>
+                                <div id="P29" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">3</div>
+                                <div id="P30" class="divCell"></div>
+                                <div id="P31" class="divCell"></div>
+                                <div id="P32" class="divCell"></div>
+                                <div id="P33" class="divCell"></div>
+                                <div id="P34" class="divCell"></div>
+                                <div id="P35" class="divCell"></div>
+                                <div id="P36" class="divCell"></div>
+                                <div id="P37" class="divCell"></div>
+                                <div id="P38" class="divCell"></div>
+                                <div id="P39" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">4</div>
+                                <div id="P40" class="divCell"></div>
+                                <div id="P41" class="divCell"></div>
+                                <div id="P42" class="divCell"></div>
+                                <div id="P43" class="divCell"></div>
+                                <div id="P44" class="divCell"></div>
+                                <div id="P45" class="divCell"></div>
+                                <div id="P46" class="divCell"></div>
+                                <div id="P47" class="divCell"></div>
+                                <div id="P48" class="divCell"></div>
+                                <div id="P49" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">5</div>
+                                <div id="P50" class="divCell"></div>
+                                <div id="P51" class="divCell"></div>
+                                <div id="P52" class="divCell"></div>
+                                <div id="P53" class="divCell"></div>
+                                <div id="P54" class="divCell"></div>
+                                <div id="P55" class="divCell"></div>
+                                <div id="P56" class="divCell"></div>
+                                <div id="P57" class="divCell"></div>
+                                <div id="P58" class="divCell"></div>
+                                <div id="P59" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">6</div>
+                                <div id="P60" class="divCell"></div>
+                                <div id="P61" class="divCell"></div>
+                                <div id="P62" class="divCell"></div>
+                                <div id="P63" class="divCell"></div>
+                                <div id="P64" class="divCell"></div>
+                                <div id="P65" class="divCell"></div>
+                                <div id="P66" class="divCell"></div>
+                                <div id="P67" class="divCell"></div>
+                                <div id="P68" class="divCell"></div>
+                                <div id="P69" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">7</div>
+                                <div id="P70" class="divCell"></div>
+                                <div id="P71" class="divCell"></div>
+                                <div id="P72" class="divCell"></div>
+                                <div id="P73" class="divCell"></div>
+                                <div id="P74" class="divCell"></div>
+                                <div id="P75" class="divCell"></div>
+                                <div id="P76" class="divCell"></div>
+                                <div id="P77" class="divCell"></div>
+                                <div id="P78" class="divCell"></div>
+                                <div id="P79" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">8</div>
+                                <div id="P80" class="divCell"></div>
+                                <div id="P81" class="divCell"></div>
+                                <div id="P82" class="divCell"></div>
+                                <div id="P83" class="divCell"></div>
+                                <div id="P84" class="divCell"></div>
+                                <div id="P85" class="divCell"></div>
+                                <div id="P86" class="divCell"></div>
+                                <div id="P87" class="divCell"></div>
+                                <div id="P88" class="divCell"></div>
+                                <div id="P89" class="divCell"></div>
+                            </div>
+                            <div class="divRow">
+                                <div class="divCell">9</div>
+                                <div id="P90" class="divCell"></div>
+                                <div id="P91" class="divCell"></div>
+                                <div id="P92" class="divCell"></div>
+                                <div id="P93" class="divCell"></div>
+                                <div id="P94" class="divCell"></div>
+                                <div id="P95" class="divCell"></div>
+                                <div id="P96" class="divCell"></div>
+                                <div id="P97" class="divCell"></div>
+                                <div id="P98" class="divCell"></div>
+                                <div id="P99" class="divCell"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div id="panelGame">
+            <div class="row">
+                <div id="gameDetails" class="col-md-12 text-center">
+                    TURNO: <span id="turn">4</span> - ESTADO DEL JUEGO: <span id="gameState">PLAY</span>
+                </div>
+            </div>        
         
-        <div class="row">
-            <div class="col-md-6">
-                <div class="colPlayer">
-                <div class="row">
-                    <div class="col-md-12 h4 text-center">PLAYER 1: <span id="nameSelf">Diego</span> </div>            
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12" >
-                        <table id="tableSelf">
-                            <tr>
-                                <td>#</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>A</td>
-                                <td id="SA0"></td>
-                                <td id="SA1"></td>
-                                <td id="SA2"></td>
-                                <td id="SA3"></td>
-                                <td id="SA4"></td>
-                                <td id="SA5"></td>
-                                <td id="SA6"></td>
-                                <td id="SA7"></td>
-                                <td id="SA8"></td>
-                                <td id="SA9"></td>
-                            </tr>
-                            <tr>
-                                <td>B</td>
-                                <td id="SB0"></td>
-                                <td id="SB1"></td>
-                                <td id="SB2"></td>
-                                <td id="SB3"></td>
-                                <td id="SB4"></td>
-                                <td id="SB5"></td>
-                                <td id="SB6"></td>
-                                <td id="SB7"></td>
-                                <td id="SB8"></td>
-                                <td id="SB9"></td>
-                            </tr>
-                            <tr>
-                                <td>C</td>
-                                <td id="SC0"></td>
-                                <td id="SC1"></td>
-                                <td id="SC2"></td>
-                                <td id="SC3"></td>
-                                <td id="SC4"></td>
-                                <td id="SC5"></td>
-                                <td id="SC6"></td>
-                                <td id="SC7"></td>
-                                <td id="SC8"></td>
-                                <td id="SC9"></td>
-                            </tr>
-                            <tr>
-                                <td>D</td>
-                                <td id="SD0"></td>
-                                <td id="SD1"></td>
-                                <td id="SD2"></td>
-                                <td id="SD3"></td>
-                                <td id="SD4"></td>
-                                <td id="SD5"></td>
-                                <td id="SD6"></td>
-                                <td id="SD7"></td>
-                                <td id="SD8"></td>
-                                <td id="SD9"></td>
-                            </tr>
-                            <tr>
-                                <td>E</td>
-                                <td id="SE0"></td>
-                                <td id="SE1"></td>
-                                <td id="SE2"></td>
-                                <td id="SE3"></td>
-                                <td id="SE4"></td>
-                                <td id="SE5"></td>
-                                <td id="SE6"></td>
-                                <td id="SE7"></td>
-                                <td id="SE8"></td>
-                                <td id="SE9"></td>
-                            </tr>
-                            <tr>
-                                <td>F</td>
-                                <td id="SF0"></td>
-                                <td id="SF1"></td>
-                                <td id="SF2"></td>
-                                <td id="SF3"></td>
-                                <td id="SF4"></td>
-                                <td id="SF5"></td>
-                                <td id="SF6"></td>
-                                <td id="SF7"></td>
-                                <td id="SF8"></td>
-                                <td id="SF9"></td>
-                            </tr>
-                            <tr>
-                                <td>G</td>
-                                <td id="SG0"></td>
-                                <td id="SG1"></td>
-                                <td id="SG2"></td>
-                                <td id="SG3"></td>
-                                <td id="SG4"></td>
-                                <td id="SG5"></td>
-                                <td id="SG6"></td>
-                                <td id="SG7"></td>
-                                <td id="SG8"></td>
-                                <td id="SG9"></td>
-                            </tr>
-                            <tr>
-                                <td>H</td>
-                                <td id="SH0"></td>
-                                <td id="SH1"></td>
-                                <td id="SH2"></td>
-                                <td id="SH3"></td>
-                                <td id="SH4"></td>
-                                <td id="SH5"></td>
-                                <td id="SH6"></td>
-                                <td id="SH7"></td>
-                                <td id="SH8"></td>
-                                <td id="SH9"></td>
-                            </tr>
-                            <tr>
-                                <td>I</td>
-                                <td id="SI0"></td>
-                                <td id="SI1"></td>
-                                <td id="SI2"></td>
-                                <td id="SI3"></td>
-                                <td id="SI4"></td>
-                                <td id="SI5"></td>
-                                <td id="SI6"></td>
-                                <td id="SI7"></td>
-                                <td id="SI8"></td>
-                                <td id="SI9"></td>
-                            </tr>
-                            <tr>
-                                <td>J</td>
-                                <td id="SJ0"></td>
-                                <td id="SJ1"></td>
-                                <td id="SJ2"></td>
-                                <td id="SJ3"></td>
-                                <td id="SJ4"></td>
-                                <td id="SJ5"></td>
-                                <td id="SJ6"></td>
-                                <td id="SJ7"></td>
-                                <td id="SJ8"></td>
-                                <td id="SJ9"></td>
-                            </tr>
-                        </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="colPlayer">
+                    <div class="row">
+                        <div class="col-md-12 h4 text-center">PLAYER 1: <span id="nameSelf">Diego</span> </div>            
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="tableDetails">
-                            <tbody id="tbodySalvoesSelf">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <table id="tableSelf">
                                 <tr>
-                                    <th>SALVOES:</th>
+                                    <td>#</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td>9</td>
                                 </tr>
-                            </tbody>                            
-                        </table>
+                                <tr>
+                                    <td>A</td>
+                                    <td id="SA0"></td>
+                                    <td id="SA1"></td>
+                                    <td id="SA2"></td>
+                                    <td id="SA3"></td>
+                                    <td id="SA4"></td>
+                                    <td id="SA5"></td>
+                                    <td id="SA6"></td>
+                                    <td id="SA7"></td>
+                                    <td id="SA8"></td>
+                                    <td id="SA9"></td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td id="SB0"></td>
+                                    <td id="SB1"></td>
+                                    <td id="SB2"></td>
+                                    <td id="SB3"></td>
+                                    <td id="SB4"></td>
+                                    <td id="SB5"></td>
+                                    <td id="SB6"></td>
+                                    <td id="SB7"></td>
+                                    <td id="SB8"></td>
+                                    <td id="SB9"></td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td id="SC0"></td>
+                                    <td id="SC1"></td>
+                                    <td id="SC2"></td>
+                                    <td id="SC3"></td>
+                                    <td id="SC4"></td>
+                                    <td id="SC5"></td>
+                                    <td id="SC6"></td>
+                                    <td id="SC7"></td>
+                                    <td id="SC8"></td>
+                                    <td id="SC9"></td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td id="SD0"></td>
+                                    <td id="SD1"></td>
+                                    <td id="SD2"></td>
+                                    <td id="SD3"></td>
+                                    <td id="SD4"></td>
+                                    <td id="SD5"></td>
+                                    <td id="SD6"></td>
+                                    <td id="SD7"></td>
+                                    <td id="SD8"></td>
+                                    <td id="SD9"></td>
+                                </tr>
+                                <tr>
+                                    <td>E</td>
+                                    <td id="SE0"></td>
+                                    <td id="SE1"></td>
+                                    <td id="SE2"></td>
+                                    <td id="SE3"></td>
+                                    <td id="SE4"></td>
+                                    <td id="SE5"></td>
+                                    <td id="SE6"></td>
+                                    <td id="SE7"></td>
+                                    <td id="SE8"></td>
+                                    <td id="SE9"></td>
+                                </tr>
+                                <tr>
+                                    <td>F</td>
+                                    <td id="SF0"></td>
+                                    <td id="SF1"></td>
+                                    <td id="SF2"></td>
+                                    <td id="SF3"></td>
+                                    <td id="SF4"></td>
+                                    <td id="SF5"></td>
+                                    <td id="SF6"></td>
+                                    <td id="SF7"></td>
+                                    <td id="SF8"></td>
+                                    <td id="SF9"></td>
+                                </tr>
+                                <tr>
+                                    <td>G</td>
+                                    <td id="SG0"></td>
+                                    <td id="SG1"></td>
+                                    <td id="SG2"></td>
+                                    <td id="SG3"></td>
+                                    <td id="SG4"></td>
+                                    <td id="SG5"></td>
+                                    <td id="SG6"></td>
+                                    <td id="SG7"></td>
+                                    <td id="SG8"></td>
+                                    <td id="SG9"></td>
+                                </tr>
+                                <tr>
+                                    <td>H</td>
+                                    <td id="SH0"></td>
+                                    <td id="SH1"></td>
+                                    <td id="SH2"></td>
+                                    <td id="SH3"></td>
+                                    <td id="SH4"></td>
+                                    <td id="SH5"></td>
+                                    <td id="SH6"></td>
+                                    <td id="SH7"></td>
+                                    <td id="SH8"></td>
+                                    <td id="SH9"></td>
+                                </tr>
+                                <tr>
+                                    <td>I</td>
+                                    <td id="SI0"></td>
+                                    <td id="SI1"></td>
+                                    <td id="SI2"></td>
+                                    <td id="SI3"></td>
+                                    <td id="SI4"></td>
+                                    <td id="SI5"></td>
+                                    <td id="SI6"></td>
+                                    <td id="SI7"></td>
+                                    <td id="SI8"></td>
+                                    <td id="SI9"></td>
+                                </tr>
+                                <tr>
+                                    <td>J</td>
+                                    <td id="SJ0"></td>
+                                    <td id="SJ1"></td>
+                                    <td id="SJ2"></td>
+                                    <td id="SJ3"></td>
+                                    <td id="SJ4"></td>
+                                    <td id="SJ5"></td>
+                                    <td id="SJ6"></td>
+                                    <td id="SJ7"></td>
+                                    <td id="SJ8"></td>
+                                    <td id="SJ9"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="tableDetails">
+                                <tbody id="tbodySalvoesSelf">
+                                    <tr>
+                                        <th>SALVOES:</th>
+                                    </tr>
+                                </tbody>                            
+                            </table>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="colPlayer">
+                    <div class="row">
+                        <div class="col-md-12 h4 text-center">PLAYER 2: <span id="nameOpp">Matias</span> </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="tableOpp">
+                                <tr>
+                                    <td>#</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td id="A0"></td>
+                                    <td id="A1"></td>
+                                    <td id="A2"></td>
+                                    <td id="A3"></td>
+                                    <td id="A4"></td>
+                                    <td id="A5"></td>
+                                    <td id="A6"></td>
+                                    <td id="A7"></td>
+                                    <td id="A8"></td>
+                                    <td id="A9"></td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td id="B0"></td>
+                                    <td id="B1"></td>
+                                    <td id="B2"></td>
+                                    <td id="B3"></td>
+                                    <td id="B4"></td>
+                                    <td id="B5"></td>
+                                    <td id="B6"></td>
+                                    <td id="B7"></td>
+                                    <td id="B8"></td>
+                                    <td id="B9"></td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td id="C0"></td>
+                                    <td id="C1"></td>
+                                    <td id="C2"></td>
+                                    <td id="C3"></td>
+                                    <td id="C4"></td>
+                                    <td id="C5"></td>
+                                    <td id="C6"></td>
+                                    <td id="C7"></td>
+                                    <td id="C8"></td>
+                                    <td id="C9"></td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td id="D0"></td>
+                                    <td id="D1"></td>
+                                    <td id="D2"></td>
+                                    <td id="D3"></td>
+                                    <td id="D4"></td>
+                                    <td id="D5"></td>
+                                    <td id="D6"></td>
+                                    <td id="D7"></td>
+                                    <td id="D8"></td>
+                                    <td id="D9"></td>
+                                </tr>
+                                <tr>
+                                    <td>E</td>
+                                    <td id="E0"></td>
+                                    <td id="E1"></td>
+                                    <td id="E2"></td>
+                                    <td id="E3"></td>
+                                    <td id="E4"></td>
+                                    <td id="E5"></td>
+                                    <td id="E6"></td>
+                                    <td id="E7"></td>
+                                    <td id="E8"></td>
+                                    <td id="E9"></td>
+                                </tr>
+                                <tr>
+                                    <td>F</td>
+                                    <td id="F0"></td>
+                                    <td id="F1"></td>
+                                    <td id="F2"></td>
+                                    <td id="F3"></td>
+                                    <td id="F4"></td>
+                                    <td id="F5"></td>
+                                    <td id="F6"></td>
+                                    <td id="F7"></td>
+                                    <td id="F8"></td>
+                                    <td id="F9"></td>
+                                </tr>
+                                <tr>
+                                    <td>G</td>
+                                    <td id="G0"></td>
+                                    <td id="G1"></td>
+                                    <td id="G2"></td>
+                                    <td id="G3"></td>
+                                    <td id="G4"></td>
+                                    <td id="G5"></td>
+                                    <td id="G6"></td>
+                                    <td id="G7"></td>
+                                    <td id="G8"></td>
+                                    <td id="G9"></td>
+                                </tr>
+                                <tr>
+                                    <td>H</td>
+                                    <td id="H0"></td>
+                                    <td id="H1"></td>
+                                    <td id="H2"></td>
+                                    <td id="H3"></td>
+                                    <td id="H4"></td>
+                                    <td id="H5"></td>
+                                    <td id="H6"></td>
+                                    <td id="H7"></td>
+                                    <td id="H8"></td>
+                                    <td id="H9"></td>
+                                </tr>
+                                <tr>
+                                    <td>I</td>
+                                    <td id="I0"></td>
+                                    <td id="I1"></td>
+                                    <td id="I2"></td>
+                                    <td id="I3"></td>
+                                    <td id="I4"></td>
+                                    <td id="I5"></td>
+                                    <td id="I6"></td>
+                                    <td id="I7"></td>
+                                    <td id="I8"></td>
+                                    <td id="I9"></td>
+                                </tr>
+                                <tr>
+                                    <td>J</td>
+                                    <td id="J0"></td>
+                                    <td id="J1"></td>
+                                    <td id="J2"></td>
+                                    <td id="J3"></td>
+                                    <td id="J4"></td>
+                                    <td id="J5"></td>
+                                    <td id="J6"></td>
+                                    <td id="J7"></td>
+                                    <td id="J8"></td>
+                                    <td id="J9"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">            
+                        <div class="col-md-12">
+                            <table id="tbodySalvoesOpp" class="tableDetails">
+                                <tbody>
+                                    <tr>
+                                        <th>SALVOES:</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>        
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="colPlayer">
-                <div class="row">
-                    <div class="col-md-12 h4 text-center">PLAYER 2: <span id="nameOpp">Matias</span> </div>
-                </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tableOpp">
-                            <tr>
-                                <td>#</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                            </tr>
-                            <tr>
-                                <td>A</td>
-                                <td id="A0"></td>
-                                <td id="A1"></td>
-                                <td id="A2"></td>
-                                <td id="A3"></td>
-                                <td id="A4"></td>
-                                <td id="A5"></td>
-                                <td id="A6"></td>
-                                <td id="A7"></td>
-                                <td id="A8"></td>
-                                <td id="A9"></td>
-                            </tr>
-                            <tr>
-                                <td>B</td>
-                                <td id="B0"></td>
-                                <td id="B1"></td>
-                                <td id="B2"></td>
-                                <td id="B3"></td>
-                                <td id="B4"></td>
-                                <td id="B5"></td>
-                                <td id="B6"></td>
-                                <td id="B7"></td>
-                                <td id="B8"></td>
-                                <td id="B9"></td>
-                            </tr>
-                            <tr>
-                                <td>C</td>
-                                <td id="C0"></td>
-                                <td id="C1"></td>
-                                <td id="C2"></td>
-                                <td id="C3"></td>
-                                <td id="C4"></td>
-                                <td id="C5"></td>
-                                <td id="C6"></td>
-                                <td id="C7"></td>
-                                <td id="C8"></td>
-                                <td id="C9"></td>
-                            </tr>
-                            <tr>
-                                <td>D</td>
-                                <td id="D0"></td>
-                                <td id="D1"></td>
-                                <td id="D2"></td>
-                                <td id="D3"></td>
-                                <td id="D4"></td>
-                                <td id="D5"></td>
-                                <td id="D6"></td>
-                                <td id="D7"></td>
-                                <td id="D8"></td>
-                                <td id="D9"></td>
-                            </tr>
-                            <tr>
-                                <td>E</td>
-                                <td id="E0"></td>
-                                <td id="E1"></td>
-                                <td id="E2"></td>
-                                <td id="E3"></td>
-                                <td id="E4"></td>
-                                <td id="E5"></td>
-                                <td id="E6"></td>
-                                <td id="E7"></td>
-                                <td id="E8"></td>
-                                <td id="E9"></td>
-                            </tr>
-                            <tr>
-                                <td>F</td>
-                                <td id="F0"></td>
-                                <td id="F1"></td>
-                                <td id="F2"></td>
-                                <td id="F3"></td>
-                                <td id="F4"></td>
-                                <td id="F5"></td>
-                                <td id="F6"></td>
-                                <td id="F7"></td>
-                                <td id="F8"></td>
-                                <td id="F9"></td>
-                            </tr>
-                            <tr>
-                                <td>G</td>
-                                <td id="G0"></td>
-                                <td id="G1"></td>
-                                <td id="G2"></td>
-                                <td id="G3"></td>
-                                <td id="G4"></td>
-                                <td id="G5"></td>
-                                <td id="G6"></td>
-                                <td id="G7"></td>
-                                <td id="G8"></td>
-                                <td id="G9"></td>
-                            </tr>
-                            <tr>
-                                <td>H</td>
-                                <td id="H0"></td>
-                                <td id="H1"></td>
-                                <td id="H2"></td>
-                                <td id="H3"></td>
-                                <td id="H4"></td>
-                                <td id="H5"></td>
-                                <td id="H6"></td>
-                                <td id="H7"></td>
-                                <td id="H8"></td>
-                                <td id="H9"></td>
-                            </tr>
-                            <tr>
-                                <td>I</td>
-                                <td id="I0"></td>
-                                <td id="I1"></td>
-                                <td id="I2"></td>
-                                <td id="I3"></td>
-                                <td id="I4"></td>
-                                <td id="I5"></td>
-                                <td id="I6"></td>
-                                <td id="I7"></td>
-                                <td id="I8"></td>
-                                <td id="I9"></td>
-                            </tr>
-                            <tr>
-                                <td>J</td>
-                                <td id="J0"></td>
-                                <td id="J1"></td>
-                                <td id="J2"></td>
-                                <td id="J3"></td>
-                                <td id="J4"></td>
-                                <td id="J5"></td>
-                                <td id="J6"></td>
-                                <td id="J7"></td>
-                                <td id="J8"></td>
-                                <td id="J9"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
 
-                <div class="row">            
-                    <div class="col-md-12">
-                        <table id="tbodySalvoesOpp" class="tableDetails">
-                            <tbody>
-                                <tr>
-                                    <th>SALVOES:</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                </div>        
-            </div>
-        </div>        
     </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

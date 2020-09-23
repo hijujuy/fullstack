@@ -3,9 +3,6 @@ const tbodySalvoesOpp = document.getElementById('tbodySalvoesOpp');
 var salvoesLocationsSelf = ['B5', 'F0', 'H6'];
 var salvoesLocationsOpp = ['C1', 'F7', 'J5'];
 
-showPositions(salvoesLocationsOpp, true);
-showPositions(salvoesLocationsSelf, false);
-
 function showPositions(salvoesLocations, self) {
     let tbody = self ? tbodySalvoessSelf : tbodySalvoesOpp;
     var fila = document.createElement('tr');

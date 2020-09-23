@@ -1,24 +1,24 @@
 body {
-  background-image: url(../img/back1.png);
+  /* background-image: url(../img/back1.png); */
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 #title {
-  text-align: center;
   border: 2px solid blueviolet;
   background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
 }
 
-#bannerTitle {
-  background-image: url(../img/title.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: auto;
-  max-width: 100%;
+#title img {
+  display: none;
+  height: 50px;
 }
 
-
+/* Div Panel Games */
+#panelGame {
+  display: none;
+}
 
 #gameDetails {
   border: 2px solid yellowgreen;
@@ -29,7 +29,7 @@ body {
   border-radius: 25px;
 }
 
-#tableSelf, #tableOpp {
+#tableSelf, #tableOpp{
   border: 2px solid red;
   margin: 10px auto;  
   background-color: rgba(0, 0, 0, 0.7);
@@ -62,3 +62,30 @@ body {
 .hitCell {
   background-color: purple;
 }
+
+/* Div Ships Placement */
+.divTable {
+  display: table;
+  border: 2px solid yellowgreen;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+
+.divRow {
+  display: table-row;
+}
+
+.divCell {
+  display: table-cell;
+  border: 1px solid antiquewhite;
+  width: 40px;
+  height: 40px;
+  color: gold;
+  text-align: center;
+  touch-action: none;
+  user-select: none;
+}
+
