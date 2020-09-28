@@ -1,132 +1,100 @@
-/*
-dragstart
-dragover
-drop
-dragend
-
-dragenter next
-dragover
-dragleave previus
-drop
-
-var shipsLocationsSelf  = ['A0','B2','F7'];
-var shipsLocationsOpp   = ['A2','B5','H9'];
-
-function showShipsLocations(shipsLocations) {
-    shipsLocations.forEach(item => {
-        document.getElementById('S'+item).classList.add('shipCell');
-    });
-}
-*/
-var shipCurrent;
+var ships;
 var dragged;
+var shipDiv;
+
+/* Definicion y creacion de ships */
 ships = [
-    { name: 'patrolboat',   x: 0, y: 0, width: 2, height: 1, direction: 'hor'},
-    { name: 'submarine',    x: 0, y: 2, width: 3, height: 1, direction: 'hor'},
+    { name: 'carrier',      x: 0, y: 0, width: 5, height: 1, direction: 'hor'},
+    { name: 'destroyer',    x: 0, y: 2, width: 4, height: 1, direction: 'hor'},
     { name: 'battleship',   x: 0, y: 4, width: 3, height: 1, direction: 'hor'},
-    { name: 'destroyer',    x: 0, y: 6, width: 4, height: 1, direction: 'hor'},
-    { name: 'carrier',      x: 0, y: 8, width: 5, height: 1, direction: 'hor'}
+    { name: 'submarine',    x: 0, y: 6, width: 3, height: 1, direction: 'hor'},
+    { name: 'patrolboat',   x: 0, y: 8, width: 2, height: 1, direction: 'hor'}
 ];
 
-shipsPlacement();
+/*  */
+placeShips();
+showPlaces();
 
-function shipsPlacement() {    
-    for (let y = 0; y < 10; y++) {        
-        for (let x = 0; x < 10; x++) {
-            document.getElementById('P'+y+x).dataset.x = x;
-            document.getElementById('P'+y+x).dataset.y = y;
-            document.getElementById('P'+y+x).classList.add('dropzone');
-        }
+/* Ubica los ship en la tabla */
+function placeShips() {
+    for (let i = 0; i < ships.length; i++) {
+        console.log(ships[i].name);
+        let div = document.createElement('div');
+        div.setAttribute('id', ships[i].name);
+        div.setAttribute('draggable', true);
+        div.classList.add('shipCell');
+        div.dataset.x = ships[i].x;
+        div.dataset.y = ships[i].y;
+        div.dataset.width = ships[i].width;
+        div.dataset.height = ships[i].height;
+        div.dataset.direction = ships[i].direction;
+        document.getElementById('P'+ships[i].y+ships[i].x).appendChild(div);
     }
-    
-    ships.forEach(ship => {
-        for (let y = ship.y; y < ship.y+ship.height; y++) {
-            for (let x = ship.x; x < ship.x+ship.width; x++) {
-                let cell = document.getElementById('P'+y+x);
-                cell.classList.add('shipCell');
-            }    
-        }
-        document.getElementById('P'+ship.y+ship.x).setAttribute('draggable', true);
-        document.getElementById('P'+ship.y+ship.x).dataset.name = ship.name;        
-    });
+}
+
+function showPlaces() {
+    for (let i = 0; i < ships.length; i++) {
+        document.getElementById(ships[i].name+'Location')
+        .textContent = 'x: '+ships[i].x+' - y: '+ships[i].y;
+    }
     
 }
 
-document.addEventListener('click', function(e){
-    shipName = e.target.getAttribute('data-name');
-    let ship = ships.find(item => item.name == shipName);
+/* Creacion de zonas drop para objetos draggables 
+*/
+
+for (let x = 0; x < 10; x++) {
+    for (let y = 0; y < 10; y++) {
+        let cell = document.getElementById('P'+y+x);
+        cell.classList.add('dropzone');
+        cell.dataset.x = x;
+        cell.dataset.y = y;
+    }
+}
+
+/* Definicion de eventos */
+document.addEventListener('dragstart', function(e) {
+    e.dataTransfer.setData('shipDraggedId', e.target.id);
     
-    if (ship.direction === 'hor') {
-        
-        for (let x = ship.x; x < ship.x + ship.width; x++) {
-            document.getElementById('P' + ship.y + x).classList.remove('shipCell');
-        }
-        for (let y = ship.y; y < ship.y + ship.width; y++) {
-            document.getElementById('P' + y + ship.x).classList.add('shipCell');
-        }
-        ship.direction = 'ver';
-    }
-    else if (ship.direction === 'ver') {
-        for (let y = ship.y; y < ship.y + ship.height; y++) {
-            document.getElementById('P' + y + ship.x).classList.remove('shipCell');
-        }
-        for (let x = ship.x; x < ship.x + ship.height; x++) {
-            document.getElementById('P' + ship.y + x).classList.add('shipCell');
-        }
-        ship.direction = 'hor';
-    }
-
-    let aux = ship.width;
-    ship.width = ship.height;
-    ship.height = aux;
-    console.log(ship);
-});
-
-document.addEventListener('dragstart', function(e){
-    dragged = e.target;    
-    shipName = e.target.getAttribute('data-name');
-    shipCurrent = ships.find(item => item.name == shipName);    
 });
 
 document.addEventListener('dragover', function(e){
-    e.preventDefault();        
-    fillCell(e.target);
+    e.preventDefault();
+
 });
 
-function fillCell(current) {
-    let x0 = parseInt(dragged.getAttribute('data-x'));
-    let y0 = parseInt(dragged.getAttribute('data-y'));
-    let x1 = parseInt(current.getAttribute('data-x'));
-    let y1 = parseInt(current.getAttribute('data-y'));
-    let dx = x1 - x0;
-    let dy = y1 - y0;
-    console.log('dx = '+dx+' - dy = '+dy);
+document.addEventListener('drop', function(e) {
+    draggedId = e.dataTransfer.getData('shipDraggedId');
 
-    if (dx || dy) {
-        if (shipCurrent.height === 1){
-            for (let x = x0; x < x0+shipCurrent.width; x++) {            
-                document.getElementById('P'+y0+x).classList.remove('shipCell');            
-            }
-            for (let x = x1; x < x1+shipCurrent.width; x++) {
-                document.getElementById('P'+y1+x).classList.add('shipCell');
-            }        
-        }
+    shipDiv = document.getElementById(draggedId);
 
-        if (shipCurrent.width === 1) {
-            for (let y = y0; y < y0+shipCurrent.height; y++) {            
-                document.getElementById('P'+y+x0).classList.remove('shipCell');            
-            }
-            for (let y = y1; y < y1+shipCurrent.height; y++) {
-                document.getElementById('P'+y+x1).classList.add('shipCell');
-            }        
-        }
-        current.dataset.name = dragged.getAttribute('data-name');
-        dragged.removeAttribute('data-name');
-        current.setAttribute('draggable', true);
-        dragged.removeAttribute('draggable');
-        shipCurrent.x = x1;
-        shipCurrent.y = y1;
-        dragged = current;
+    if (e.target.classList.contains('dropzone')) {
+        if (validTranslate(e.target, shipDiv)){            
+            e.target.appendChild(document.getElementById(draggedId));
+            let shipObject = ships.find(ship => ship.name === draggedId);
+            shipObject.x = parseInt(e.target.dataset.x);
+            shipObject.y = parseInt(e.target.dataset.y);
+            shipDiv.dataset.x = shipObject.x;
+            shipDiv.dataset.y = shipObject.y;
+            document.getElementById(shipObject.name+'Location')
+                .textContent = 'x: '+shipObject.x+' - y: '+shipObject.y;
+        }        
     }
+});
+
+function validTranslate(cell, ship) {
+    let x = parseInt(cell.dataset.x);
+    let y = parseInt(cell.dataset.y);
+    let width = parseInt(ship.dataset.width);
+    let height = parseInt(ship.dataset.height);
+    let response = false;
     
+    if (x + width <= 10) {
+        if (y + height <= 10) {
+            response = true;
+        }
+    }
+
+    return response;
+
 }
