@@ -18,7 +18,6 @@ showPlaces();
 /* Ubica los ship en la tabla */
 function placeShips() {
     for (let i = 0; i < ships.length; i++) {
-        console.log(ships[i].name);
         let div = document.createElement('div');
         div.setAttribute('id', ships[i].name);
         div.setAttribute('draggable', true);
@@ -28,14 +27,13 @@ function placeShips() {
         div.dataset.width = ships[i].width;
         div.dataset.height = ships[i].height;
         div.dataset.direction = ships[i].direction;
-        document.getElementById('P'+ships[i].y+ships[i].x).appendChild(div);
+        document.getElementById('S'+ships[i].y+ships[i].x).appendChild(div);
     }
 }
 
 function showPlaces() {
     for (let i = 0; i < ships.length; i++) {
-        document.getElementById(ships[i].name+'Location')
-        .textContent = 'x: '+ships[i].x+' - y: '+ships[i].y;
+        console.log(ships[i].name+': x= '+ships[i].x+' - y: '+ships[i].y);
     }
     
 }
@@ -45,7 +43,7 @@ function showPlaces() {
 
 for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
-        let cell = document.getElementById('P'+y+x);
+        let cell = document.getElementById('S'+y+x);
         cell.classList.add('dropzone');
         cell.dataset.x = x;
         cell.dataset.y = y;
@@ -65,9 +63,7 @@ document.addEventListener('dragover', function(e){
 
 document.addEventListener('drop', function(e) {
     draggedId = e.dataTransfer.getData('shipDraggedId');
-
     shipDiv = document.getElementById(draggedId);
-
     if (e.target.classList.contains('dropzone')) {
         if (validTranslate(e.target, shipDiv)){            
             e.target.appendChild(document.getElementById(draggedId));
@@ -76,9 +72,7 @@ document.addEventListener('drop', function(e) {
             shipObject.y = parseInt(e.target.dataset.y);
             shipDiv.dataset.x = shipObject.x;
             shipDiv.dataset.y = shipObject.y;
-            document.getElementById(shipObject.name+'Location')
-                .textContent = 'x: '+shipObject.x+' - y: '+shipObject.y;
-        }        
+        }
     }
 });
 
