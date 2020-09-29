@@ -1,6 +1,5 @@
 var ships;
 var dragged;
-var shipDiv;
 
 /* Definicion y creacion de ships */
 ships = [
@@ -13,8 +12,6 @@ ships = [
 
 /*  */
 placeShips();
-showPlaces();
-
 /* Ubica los ship en la tabla */
 function placeShips() {
     for (let i = 0; i < ships.length; i++) {
@@ -28,19 +25,11 @@ function placeShips() {
         div.dataset.height = ships[i].height;
         div.dataset.direction = ships[i].direction;
         document.getElementById('S'+ships[i].y+ships[i].x).appendChild(div);
+        document.getElementById('S'+ships[i].y+ships[i].x).classList.add('shipCell');
     }
 }
 
-function showPlaces() {
-    for (let i = 0; i < ships.length; i++) {
-        console.log(ships[i].name+': x= '+ships[i].x+' - y: '+ships[i].y);
-    }
-    
-}
-
-/* Creacion de zonas drop para objetos draggables 
-*/
-
+/* Creacion de zonas drop para objetos draggables */
 for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
         let cell = document.getElementById('S'+y+x);
@@ -63,19 +52,23 @@ document.addEventListener('dragover', function(e){
 
 document.addEventListener('drop', function(e) {
     draggedId = e.dataTransfer.getData('shipDraggedId');
-    shipDiv = document.getElementById(draggedId);
+    let shipDiv = document.getElementById(draggedId);
+
     if (e.target.classList.contains('dropzone')) {
         if (validTranslate(e.target, shipDiv)){            
-            e.target.appendChild(document.getElementById(draggedId));
+            e.target.appendChild(document.getElementById(draggedId));            
             let shipObject = ships.find(ship => ship.name === draggedId);
+            document.getElementById('S'+shipObject.y+shipObject.x).classList.remove('shipCell');
             shipObject.x = parseInt(e.target.dataset.x);
             shipObject.y = parseInt(e.target.dataset.y);
             shipDiv.dataset.x = shipObject.x;
             shipDiv.dataset.y = shipObject.y;
+            document.getElementById('S'+shipObject.y+shipObject.x).classList.add('shipCell');
         }
     }
 });
 
+/* Validacion de movimiento de traslacion de ships */
 function validTranslate(cell, ship) {
     let x = parseInt(cell.dataset.x);
     let y = parseInt(cell.dataset.y);
@@ -90,5 +83,4 @@ function validTranslate(cell, ship) {
     }
 
     return response;
-
 }
