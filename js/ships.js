@@ -1,5 +1,5 @@
 var ships;
-var dragged;
+var shipCells = [];
 
 /* Definicion y creacion de ships */
 ships = [
@@ -12,9 +12,13 @@ ships = [
 
 /*  */
 placeShips();
-/* Ubica los ship en la tabla */
+
+/* Primera funcion q ejecuta el script */
 function placeShips() {
-    for (let i = 0; i < ships.length; i++) {
+    /* Ubica los elementos del array ships en la tabla */
+    for (let i = 0; i < ships.length; i++) {        
+
+        /* Creacion y llenado de cada ship draggable en la tabla self */
         let div = document.createElement('div');
         div.setAttribute('id', ships[i].name);
         div.setAttribute('draggable', true);
@@ -24,63 +28,148 @@ function placeShips() {
         div.dataset.width = ships[i].width;
         div.dataset.height = ships[i].height;
         div.dataset.direction = ships[i].direction;
-        document.getElementById('S'+ships[i].y+ships[i].x).appendChild(div);
-        document.getElementById('S'+ships[i].y+ships[i].x).classList.add('shipCell');
+
+        /* Insercion de boton rotacion dentro de cada ship */
+        let btn = document.createElement('div');
+        btn.classList.add('btnRotate');
+        div.appendChild(btn);
+
+        document.getElementById('S' + ships[i].y + ships[i].x).appendChild(div);
     }
+
+    /* Creacion de zonas drop para objetos draggables */
+    for (let x = 0; x < 10; x++) {
+        for (let y = 0; y < 10; y++) {
+            let cell = document.getElementById('S' + y + x);
+            cell.classList.add('dropzone');
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+        }
+    }
+
 }
 
-/* Creacion de zonas drop para objetos draggables */
-for (let x = 0; x < 10; x++) {
-    for (let y = 0; y < 10; y++) {
-        let cell = document.getElementById('S'+y+x);
-        cell.classList.add('dropzone');
-        cell.dataset.x = x;
-        cell.dataset.y = y;
-    }
+/* 
+    Carga todas las posiciones de los ships dentro de array shipCells,
+    excepto las posiciones del ship que disparó el arrastre.
+*/
+function uploadShipsPlaces(shipName) {
+    ships.filter(ship => ship.name !== shipName)
+        .forEach(ship => {
+            let startx = ship.x;
+            let endx = ship.x + ship.width;
+            let starty = ship.y;
+            let endy = ship.y + ship.height;
+            for (let y = starty; y < endy; y++) {
+                for (let x = startx; x < endx; x++) {
+                    shipCells.push('S'+y+x);
+                }
+            }        
+        });
 }
 
-/* Definicion de eventos */
+/* Definicion del manejador del evento dragstart */
 document.addEventListener('dragstart', function(e) {
     e.dataTransfer.setData('shipDraggedId', e.target.id);
-    
+    uploadShipsPlaces(e.target.id);
 });
 
-document.addEventListener('dragover', function(e){
-    e.preventDefault();
+/*
+  Overlapping, informa si las celdas que podria llegar a ocupar el ship
+  esten desocupadas. Es usado en el dragover
+*/
+function overlapping(container, ship) {
+    let a = parseInt(container.dataset.x);
+    let b = parseInt(container.dataset.y);
+    let width = a + parseInt(ship.dataset.width);
+    let height = b + parseInt(ship.dataset.height);
+    let response = false;
+    for (let x = a ; x < width; x++) {        
+        for (let y = b; y < height; y++) {
+            if (shipCells.includes('S'+y+x)){
+                response = true;
+            }
+        }        
+    }
+    return response;
+}
 
+/*
+  Overflowing, informa si el ship saldrá de los limites
+  de la tabla. Es usado en el dragover
+*/
+
+/**
+ * @param ship, es el contenedor draggable ship que desencadenó el drag
+ * @param container, es el contenedor drop que disparó el dragover 
+*/
+function overflowing(container, ship) {
+    let x = parseInt(container.dataset.x);
+    let y = parseInt(container.dataset.y);
+    let width = parseInt(ship.dataset.width);
+    let height = parseInt(ship.dataset.height);
+    let response = true;
+    if (x + width <= 10) {
+        if (y + height <= 10) {            
+            response = false;
+        }
+    }
+    return response;
+}
+
+/* 
+  is_container verifica que el contenedor donde se
+  almacenará el ship, sea una zona drop.
+*/
+function is_container(container){
+    return container.classList.contains('dropzone');
+}
+
+/* 
+  Manejador de eventos dragover
+*/
+document.addEventListener('dragover', function(e){
+    //Obtiene el div ship que se disparó el dragstart
+    let ship = document.getElementById(e.dataTransfer.getData('shipDraggedId'));
+    if (is_container(e.target)) {
+        if (!overflowing(e.target, ship)) {
+            if (!overlapping(e.target, ship)) {
+                e.preventDefault();
+            }
+        }
+    }
+});
+
+//Manejador de eventos dragend
+document.addEventListener('dragend', function(e){
+    //Remueve las celdas almacenadas en shipCells
+    shipCells.length = 0;
 });
 
 document.addEventListener('drop', function(e) {
     draggedId = e.dataTransfer.getData('shipDraggedId');
     let shipDiv = document.getElementById(draggedId);
+    e.target.appendChild(shipDiv);
+    let shipObject = ships.find(ship => ship.name === draggedId);
+    shipObject.x = parseInt(e.target.dataset.x);
+    shipObject.y = parseInt(e.target.dataset.y);
+    shipDiv.dataset.x = shipObject.x;
+    shipDiv.dataset.y = shipObject.y;
+});
 
-    if (e.target.classList.contains('dropzone')) {
-        if (validTranslate(e.target, shipDiv)){            
-            e.target.appendChild(document.getElementById(draggedId));            
-            let shipObject = ships.find(ship => ship.name === draggedId);
-            document.getElementById('S'+shipObject.y+shipObject.x).classList.remove('shipCell');
-            shipObject.x = parseInt(e.target.dataset.x);
-            shipObject.y = parseInt(e.target.dataset.y);
-            shipDiv.dataset.x = shipObject.x;
-            shipDiv.dataset.y = shipObject.y;
-            document.getElementById('S'+shipObject.y+shipObject.x).classList.add('shipCell');
+/* Modulo de rotacion de ships */
+document.addEventListener('click', function(e){
+    if (e.target.classList.contains('btnRotate')) {
+        let ship = ships.find(ship => ship.name === e.target.parentElement.id);
+        if (ship.direction === 'hor') {
+            ship.height = ship.width;
+            ship.width = 1;
+            ship.direction = 'ver';
+        }
+        else if (ship.direction === 'ver') {
+            ship.width = ship.height;
+            ship.height = 1;
+            ship.direction = 'hor';
         }
     }
 });
-
-/* Validacion de movimiento de traslacion de ships */
-function validTranslate(cell, ship) {
-    let x = parseInt(cell.dataset.x);
-    let y = parseInt(cell.dataset.y);
-    let width = parseInt(ship.dataset.width);
-    let height = parseInt(ship.dataset.height);
-    let response = false;
-    
-    if (x + width <= 10) {
-        if (y + height <= 10) {
-            response = true;
-        }
-    }
-
-    return response;
-}
