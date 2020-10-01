@@ -34,13 +34,13 @@ function placeShips() {
         btn.classList.add('btnRotate');
         div.appendChild(btn);
 
-        document.getElementById('S' + ships[i].y + ships[i].x).appendChild(div);
+        document.getElementById('P' + ships[i].y + ships[i].x).appendChild(div);
     }
 
     /* Creacion de zonas drop para objetos draggables */
     for (let x = 0; x < 10; x++) {
         for (let y = 0; y < 10; y++) {
-            let cell = document.getElementById('S' + y + x);
+            let cell = document.getElementById('P' + y + x);
             cell.classList.add('dropzone');
             cell.dataset.x = x;
             cell.dataset.y = y;
@@ -62,7 +62,7 @@ function uploadShipsPlaces(shipName) {
             let endy = ship.y + ship.height;
             for (let y = starty; y < endy; y++) {
                 for (let x = startx; x < endx; x++) {
-                    shipCells.push('S'+y+x);
+                    shipCells.push('P'+y+x);
                 }
             }        
         });
@@ -86,7 +86,7 @@ function overlapping(container, ship) {
     let response = false;
     for (let x = a ; x < width; x++) {        
         for (let y = b; y < height; y++) {
-            if (shipCells.includes('S'+y+x)){
+            if (shipCells.includes('P'+y+x)){
                 response = true;
             }
         }        
