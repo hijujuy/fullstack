@@ -44,10 +44,10 @@ body {
 }
 
 .shipCell {
-  background-color:  blue;
+  /* background-color:  blue; */
   position: absolute;
-  width: 39px;
-  height: 39px;
+  width: 40px;
+  height: 40px;
 }
 
 .salvoCell {
@@ -92,4 +92,98 @@ body {
   width: 20px;
   height: 20px;
   vertical-align: top;
+}
+
+#placingShips {
+  border: 2px solid blue;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.shipView{
+  width: 100%;
+  border: 1px solid red;
+  margin: 20px auto;
+}
+
+.carrierHor {
+  background-image: url(../img/ships/carrierHor.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 40px;
+}
+.destroyerHor {
+  background-image: url(../img/ships/destroyer.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 40px;
+}
+.battleshipHor {
+  background-image: url(../img/ships/battleship.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  margin-top: 5px;  
+}
+.submarineHor {
+  background-image: url(../img/ships/submarine.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 40px;
+  margin-top: 10px;
+}
+.patrolboatHor {
+  background-image: url(../img/ships/patrolboat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 40px;  
+}
+
+.carrierVer {
+  transform: rotate(90deg);
+}
+.destroyerVer {
+  transform: rotate(90deg);
+  transform-origin: 20px 20px;
+}
+.battleshipHor {
+  background-image: url(../img/ships/battleship.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  margin-top: 5px;  
+}
+.submarineHor {
+  background-image: url(../img/ships/submarine.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 40px;
+  margin-top: 10px;
+}
+.patrolboatHor {
+  background-image: url(../img/ships/patrolboat.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 40px;  
+}
+
+.blink {
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blink{
+  from {
+    opacity: 20%;
+  }
+  to {
+    opacity: 80%;
+  }
 }

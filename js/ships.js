@@ -12,7 +12,6 @@ ships = [
 
 /*  */
 placeShips();
-
 /* Primera funcion q ejecuta el script */
 function placeShips() {
     /* Ubica los elementos del array ships en la tabla */
@@ -23,6 +22,7 @@ function placeShips() {
         div.setAttribute('id', ships[i].name);
         div.setAttribute('draggable', true);
         div.classList.add('shipCell');
+        div.classList.add(ships[i].name+'Hor');
         div.dataset.x = ships[i].x;
         div.dataset.y = ships[i].y;
         div.dataset.width = ships[i].width;
@@ -35,6 +35,7 @@ function placeShips() {
         div.appendChild(btn);
 
         document.getElementById('P' + ships[i].y + ships[i].x).appendChild(div);
+        showShipPlaces(ships[i]);
     }
 
     /* Creacion de zonas drop para objetos draggables */
@@ -72,6 +73,8 @@ function uploadShipsPlaces(shipName) {
 document.addEventListener('dragstart', function(e) {
     e.dataTransfer.setData('shipDraggedId', e.target.id);
     uploadShipsPlaces(e.target.id);
+    document.getElementById(e.target.id+'Places').textContent = 'esperando nueva ubicacion';
+    document.getElementById(e.target.id+'Places').classList.add('blink');
 });
 
 /*
@@ -130,10 +133,11 @@ function is_container(container){
 */
 document.addEventListener('dragover', function(e){
     //Obtiene el div ship que se disparó el dragstart
+    console.log(e.target);
     let ship = document.getElementById(e.dataTransfer.getData('shipDraggedId'));
     if (is_container(e.target)) {
         if (!overflowing(e.target, ship)) {
-            if (!overlapping(e.target, ship)) {
+            if (!overlapping(e.target, ship)) {                
                 e.preventDefault();
             }
         }
@@ -143,7 +147,7 @@ document.addEventListener('dragover', function(e){
 //Manejador de eventos dragend
 document.addEventListener('dragend', function(e){
     //Remueve las celdas almacenadas en shipCells
-    shipCells.length = 0;
+    shipCells.length = 0;    
 });
 
 document.addEventListener('drop', function(e) {
@@ -155,6 +159,8 @@ document.addEventListener('drop', function(e) {
     shipObject.y = parseInt(e.target.dataset.y);
     shipDiv.dataset.x = shipObject.x;
     shipDiv.dataset.y = shipObject.y;
+    showShipPlaces(shipObject);
+    document.getElementById(shipObject.name+'Places').classList.remove('blink');
 });
 
 /* Modulo de rotacion de ships */
@@ -162,14 +168,30 @@ document.addEventListener('click', function(e){
     if (e.target.classList.contains('btnRotate')) {
         let ship = ships.find(ship => ship.name === e.target.parentElement.id);
         if (ship.direction === 'hor') {
-            ship.height = ship.width;
+            ship.height = parseInt(ship.width);
             ship.width = 1;
             ship.direction = 'ver';
+            document.getElementById(e.target.parentElement.id).classList.add(e.target.parentElement.id+'Ver');
         }
         else if (ship.direction === 'ver') {
             ship.width = ship.height;
             ship.height = 1;
             ship.direction = 'hor';
+            document.getElementById(e.target.parentElement.id).classList.remove(e.target.parentElement.id+'Ver');
         }
     }
 });
+
+function showShipPlaces(ship) {
+    let places = [];
+    let startx = ship.x;
+    let endx = ship.x + ship.width;
+    let starty = ship.y;
+    let endy = ship.y + ship.height;
+    for (let y = starty; y < endy; y++) {
+        for (let x = startx; x < endx; x++) {
+            places.push('' + y + x);
+        }
+    }
+    document.getElementById(ship.name + 'Places').textContent = '[ ' + places + ']';
+}
