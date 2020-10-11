@@ -1,7 +1,4 @@
 body {
-  /* background-image: url(../img/back1.png);
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 
 #title {
@@ -32,22 +29,23 @@ body {
   background-color: rgba(0, 0, 0, 0.74);
 }
 
-.tableDetails td, .tableDetails th {
+.tableDetails td,
+.tableDetails th {
   font-size: 12px;
   width: 80px;
   color: gold;
   text-align: center;
   padding-left: 10px;
-  padding-right: 10px;  
+  padding-right: 10px;
   border-top: 1px solid blue;
   border-bottom: 1px solid blue;
 }
 
 .shipCell {
   /* background-color:  blue; */
-  position: absolute;
   width: 40px;
   height: 40px;
+  position: absolute;
 }
 
 .salvoCell {
@@ -63,7 +61,7 @@ body {
   display: table;
   margin: 0 auto;
   border: 2px solid red;
-  /* background-color: rgba(0, 0, 0, 0.85); */
+  background-color: rgba(49, 34, 253, 0.85);
 }
 
 .divTableBody {
@@ -76,7 +74,7 @@ body {
 
 .divCell {
   display: table-cell;
-  border: 1px solid blue;
+  border: 1px solid gold;
   width: 40px;
   height: 40px;
   color: gold;
@@ -100,77 +98,46 @@ body {
   padding: 20px;
 }
 
-.shipView{
-  width: 100%;
-  border: 1px solid red;
-  margin: 20px auto;
-}
-
 .carrierHor {
   background-image: url(../img/ships/carrierHor.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  width: 200px;
-  height: 40px;
+  width: 500%;
+  height: 120%;
 }
 .destroyerHor {
   background-image: url(../img/ships/destroyer.png);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  width: 160px;
-  height: 40px;
+  width: 400%;
+  height: 90%;
+  left: 2px;
 }
 .battleshipHor {
   background-image: url(../img/ships/battleship.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 120px;
-  margin-top: 5px;  
+  width: 300%;
+  height: 100%;
 }
 .submarineHor {
   background-image: url(../img/ships/submarine.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 120px;
-  height: 40px;
-  margin-top: 10px;
+  width: 300%;
+  height: 100%;
 }
 .patrolboatHor {
   background-image: url(../img/ships/patrolboat.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 80px;
-  height: 40px;  
+  width: 200%;
+  height: 100%;
 }
 
-.carrierVer {
-  transform: rotate(90deg);
-}
-.destroyerVer {
+.verticalShip {
   transform: rotate(90deg);
   transform-origin: 20px 20px;
-}
-.battleshipHor {
-  background-image: url(../img/ships/battleship.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 120px;
-  margin-top: 5px;  
-}
-.submarineHor {
-  background-image: url(../img/ships/submarine.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 120px;
-  height: 40px;
-  margin-top: 10px;
-}
-.patrolboatHor {
-  background-image: url(../img/ships/patrolboat.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 80px;
-  height: 40px;  
 }
 
 .blink {
@@ -179,11 +146,76 @@ body {
   animation-iteration-count: infinite;
 }
 
-@keyframes blink{
+@keyframes blink {
   from {
     opacity: 20%;
   }
   to {
     opacity: 80%;
   }
+}
+
+.placementShips {
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.titlePlacement {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid black;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px;
+  color: aqua;
+}
+
+.bodyPlacement {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px;
+  color: chartreuse;
+}
+
+/* Apariencia del puntero mouse mientras hover*/
+.shipCell:hover {
+  cursor: move;
+}
+
+.btnRotate:hover {
+  cursor: pointer;
+}
+
+#btnSubmitLocations {
+  margin-top: 50px;
+}
+
+@keyframes hideBlock {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(150%);
+  }
+}
+
+@keyframes showBlock {
+  0% {
+    transform: translateY(-150%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.divCell div {
+  position: absolute;
+}
+
+.fire {
+  position: relative;
+  width: 40px;
 }
